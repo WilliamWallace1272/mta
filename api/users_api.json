@@ -1,0 +1,141 @@
+{
+	"id"	:	"http://json-schema.org/draft-04/schema#",
+	"$schema"	:	"http://json-schema.org/draft-04/schema#",
+	"title"	:	"Users",
+	"description"	:	"Deals with users",
+	"stability"	:	"Prototype",
+	"strictProperties"	:	true,
+	"type"	:	["object"],
+	"definitions"	: {
+			"courseID"	: {
+				"description"	:	"Unique course identifier used in MTA",
+				"type"	: "integer"
+			},
+			"users"	: {
+					"description"	:	"Unique usernames",
+					"type"	:	"string"
+			},
+			"errors"	:	{
+				"description"	: "Error output from API call",
+				"type"	:	"string",
+			}
+	},
+	"links"	:	[
+		{
+			"description"	: "Add users to a course",
+			"href"	:	"/users/create",
+			"title"	:	"create",
+			"method"	:	"POST",
+			"rel"	:	"create",
+			"schema"	:	{
+				"type"	:	"object",
+				"required"	:	["courseID", "users"],
+				"additionalProperties"	:	false,
+				"properties"	:	{
+					"courseID"	:	{
+						"$ref"	:	"#/definitions/courseID"
+					},
+					"users"	:	{
+						"$ref"	:	"#/definitions/users"
+					},
+					"errors"	:	{
+						"$ref"	:	"#/definitions/errors"
+					}
+				}
+			},
+			"targetSchema"	:	{
+				"type"	: "object",
+				"required"	:	[],
+				"additionalProperties"	:	"false",
+				"properties"	:	{}
+			}
+		},
+		{
+			"description"	: "Update users of a course",
+			"href"	:	"/users/update",
+			"title"	:	"update",
+			"method"	:	"POST",
+			"rel"	:	"update",
+			"schema"	:	{
+				"type"	:	"object",
+				"required"	:	["courseID", "users"],
+				"additionalProperties"	:	false,
+				"properties"	:	{
+					"courseID"	:	{
+						"$ref"	:	"#/definitions/courseID"
+					},
+					"users"	:	{
+						"$ref"	:	"#/definitions/users"
+					},
+					"errors"	:	{
+						"$ref"	:	"#/definitions/errors"
+					}
+				}
+			},
+			"targetSchema"	:	{
+				"type"	: "object",
+				"required"	:	[],
+				"additionalProperties"	:	"false",
+				"properties"	:	{}
+			}
+		},
+		{
+			"description"	: "List users of a course",
+			"href"	:	"/users/get",
+			"title"	:	"get",
+			"method"	:	"GET",
+			"rel"	:	"list",
+			"schema"	:	{
+				"type"	:	"object",
+				"required"	:	["courseID"],
+				"additionalProperties"	:	false,
+				"properties"	:	{
+					"courseID"	:	{
+						"$ref"	:	"#/definitions/courseID"
+					},
+					"users"	:	{
+						"$ref"	:	"#/definitions/users"
+					},
+					"errors"	:	{
+						"$ref"	:	"#/definitions/errors"
+					}
+				}
+			},
+			"targetSchema"	:	{
+				"type"	: "object",
+				"required"	:	[],
+				"additionalProperties"	:	"false",
+				"properties"	:	{}
+			}
+		},
+		{
+			"description"	: "Drop users from a course",
+			"href"	:	"/users/delete",
+			"title"	:	"delete",
+			"method"	:	"POST",
+			"rel"	:	"drop",
+			"schema"	:	{
+				"type"	:	"object",
+				"required"	:	["courseID", "users"],
+				"additionalProperties"	:	false,
+				"properties"	:	{
+					"courseID"	:	{
+						"$ref"	:	"#/definitions/courseID"
+					},
+					"users"	:	{
+						"$ref"	:	"#/definitions/users"
+					},
+					"errors"	:	{
+						"$ref"	:	"#/definitions/errors"
+					}
+				}
+			},
+			"targetSchema"	:	{
+				"type"	: "object",
+				"required"	:	[],
+				"additionalProperties"	:	"false",
+				"properties"	:	{}
+			}
+		}
+	]
+}

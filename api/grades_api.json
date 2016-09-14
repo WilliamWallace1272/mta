@@ -1,0 +1,61 @@
+{
+	"id"	:	"http://json-schema.org/draft-04/schema#",
+	"$schema"	:	"http://json-schema.org/draft-04/schema#",
+	"title"	:	"Grades",
+	"description"	:	"Deals with grades",
+	"stability"	:	"Prototype",
+	"strictProperties"	:	true,
+	"type"	:	["object"],
+	"definitions"	: {
+			"courseID"	: {
+				"description"	:	"Unique course identifier used in MTA",
+				"type"	: "integer"
+			},
+			"assignmentID"	: {
+					"description"	:	"Unique assignment identifier used in MTA",
+					"type"	:	"integer"
+			},
+			"grades"	:	{
+				"type"	:	"object",
+				"required"	:	[],
+			},
+			"errors"	:	{
+				"description"	: "Error output from API call",
+				"type"	:	"string",
+			}
+	},
+	"links"	:	[
+		{
+			"description"	: "Add grades for an assignment",
+			"href"	:	"/grades/create",
+			"title"	:	"create",
+			"method"	:	"POST",
+			"rel"	:	"create",
+			"schema"	:	{
+				"type"	:	"object",
+				"required"	:	["courseID", "assignmentID", "grades"],
+				"additionalProperties"	:	false,
+				"properties"	:	{
+					"courseID"	:	{
+						"$ref"	:	"#/definitions/courseID"
+					},
+					"assignmentID"	:	{
+						"$ref"	:	"#/definitions/assignmentID"
+					},
+					"grades"	:	{
+						"$ref"	:	"#/definitions/grades"
+					},
+					"errors"	:	{
+						"$ref"	:	"#/definitions/errors"
+					}
+				}
+			},
+			"targetSchema"	:	{
+				"type"	: "object",
+				"required"	:	[],
+				"additionalProperties"	:	"false",
+				"properties"	:	{}
+			}
+		}
+	]
+}

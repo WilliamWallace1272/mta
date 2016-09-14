@@ -133,4 +133,55 @@ function make_peer_review($assignment, $params){
     $assignment->saveReview($review);
 }
 
+function insertSinglePeerMatch($db, $submissionID, $reviewerID, $assignmentID) {
+	$checkValidSubmissionID = $db->prepare("SELECT submissionid from PEER_REVIEW_ASSIGNMENT_SUBMISSIONS where submissionID = ? and assignmentID = ?");
+	$checkValidUserID = $db->prepare("SELECT userID from USERS where userID =?");
+	$checkForMatch = $db->prepare("SELECT matchID FROM PEER_REVIEW_ASSIGNMENT_MATCHES where submissionID=? AND reviewerID = ?;");
+	$insertMatch = $db->prepare("INSERT INTO PEER_REVIEW_ASSIGNMENT_MATCHES (submissionID, reviewerID, instructorForced, calibrationState) values (?,?,0,'none')");
+	//verify if valid submission
+	$db->beginTransaction();
+	$checkValidSubmissionID->execute(array($submissionID, $assignmentID));	
+	$res = $checkValidSubmissionID->fetch();
+	if (!$res){
+		$db->commit();
+		throw new Exception("not a valid submission ID");
+	}
+	$checkValidUserID->execute(array($reviewerID));
+	$res = $checkValidUserID->fetch();
+	//TODO: log what kind of review is here
+	if (!$res){
+		$db->commit();
+		throw new Exception("not a valid reviewer ID");
+	}
+	$checkForMatch->execute(array($submissionID, $reviewerID));
+	$res = $checkForMatch->fetch();
+	if (!$res){
+		$insertMatch->execute(array($submissionID, $reviewerID));
+	} else {
+		//TODO: log, match already exists
+	}
+	$db->commit();
+}
+
+function getSubmissionIDsForAssignment($db, $assignmentID) {
+	$checkValidAssignmentID = $db->prepare("SELECT assignmentID from PEER_REVIEW_ASSIGNMENT where assignmentID = ?");
+	$getSubmissionIDs = $db->prepare("SELECT submissionID from PEER_REVIEW_ASSIGNMENT_SUBMISSIONS where assignmentID = ?");
+	$db->beginTransaction();
+	$checkValidAssignmentID->execute(array($assignmentID));
+	$res = $checkValidAssignmentID->fetch();
+	if (!$res){
+		$db->commit();
+		throw new Exception("not a valid assignment ID");
+	}
+	else {	
+		$getSubmissionIDs->execute(array($assignmentID));
+		$submissions = array();
+		while($res = $getSubmissionIDs->fetch()) {
+			$submissions[] = (int)$res->submissionID;
+		}
+		return $submissions;
+	}
+	$db->commit();
+}
+
 ?>

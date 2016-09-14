@@ -1,0 +1,485 @@
+{
+  "id": "assignment",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Assignment",
+  "description": "FIXME",
+  "stability": "prototype",
+	"strictProperties": "true",
+  "type": ["object"],
+	"definitions": {
+    "errors": {
+      "description": "error output from api call",
+      "type": "string"
+    },
+    "assignmentID": {
+      "type": "integer"
+    },
+    "courseID": {
+      "type": "integer"
+    },
+    "submissionQuestion": {
+      "type": "string"
+    },
+    "submissionStartDate": {
+      "type": "integer"
+    },
+    "submissionStopDate": {
+      "type": "integer"
+    },
+    "reviewStartDate": {
+      "type": "integer"
+    },
+    "reviewStopDate": {
+      "type": "integer"
+    },
+    "markPostDate": {
+      "type": "integer"
+    },
+    "appealStopDate": {
+      "type": "integer"
+    },
+    "showMarksForReviewsReceived": {
+      "type": "integer"
+    },
+    "showOtherReviewsByStudents": {
+      "type": "integer"
+    },
+    "showOtherReviewsByInstructors": {
+      "type": "integer"
+    },
+    "showMarksForOtherReviews": {
+      "type": "integer"
+    },
+    "showMarksForReviewedSubmissions": {
+      "type": "integer"
+    },
+    "showPoolStatus": {
+      "type": "integer"
+    },
+    "maxSubmissionScore": {
+      "type": "number"
+    },
+    "maxReviewScore": {
+      "type": "number"
+    },
+    "defaultNumberOfReviews": {
+      "type": "integer"
+    },
+    "allowRequestOfReviews": {
+      "type": "integer"
+    },
+    "calibrationMinCount": {
+      "type": "integer"
+    },
+    "calibrationMaxScore": {
+      "type": "integer"
+    },
+    "calibrationThresholdMSE": {
+      "type": "integer"
+    },
+    "calibrationThresholdScore": {
+      "type": "integer"
+    },
+    "submissionType": {
+      "type": "string"
+    },
+    "submissionSettings": {
+      "type": "object",
+      "properties": {
+        "topics": {
+          "type": "array",
+          "items": {}
+        },
+        "autoAssignEssayTopic": {
+          "type": "integer"
+        },
+        "essayWordLimit": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "topics",
+        "autoAssignEssayTopic",
+        "essayWordLimit"
+      ]
+    },
+    "calibrationPoolAssignmentIds": {
+      "type": "array",
+      "items": {}
+    },
+    "extraCalibrations": {
+      "type": "integer"
+    },
+    "calibrationStartDate": {
+      "type": "integer"
+    },
+    "calibrationStopDate": {
+      "type": "integer"
+    },
+    "dateFormat": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "assignmentType": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string"
+    },
+    "passwordMessage": {
+      "type": "string"
+    },
+    "visibleToStudents": {
+      "type": "integer"
+    }
+	},
+	"links" : [
+		{
+			"title": "update",
+			"description":  "update assignment",
+			"href": "/assignment/update",
+			"method": "POST",
+			"rel": "update",
+			"schema" : {
+				"type" : "object", 
+				"required": [
+								"courseID",
+				"submissionQuestion",
+				"submissionStartDate",
+				"submissionStopDate",
+				"reviewStartDate",
+				"reviewStopDate",
+				"markPostDate",
+				"appealStopDate",
+				"showMarksForReviewsReceived",
+				"showOtherReviewsByStudents",
+				"showOtherReviewsByInstructors",
+				"showMarksForOtherReviews",
+				"showMarksForReviewedSubmissions",
+				"showPoolStatus",
+				"maxSubmissionScore",
+				"maxReviewScore",
+				"defaultNumberOfReviews",
+				"allowRequestOfReviews",
+				"calibrationMinCount",
+				"calibrationMaxScore",
+				"calibrationThresholdMSE",
+				"calibrationThresholdScore",
+				"submissionType",
+				"submissionSettings",
+				"calibrationPoolAssignmentIds",
+				"extraCalibrations",
+				"calibrationStartDate",
+				"calibrationStopDate",
+				"dateFormat",
+				"assignmentID",
+				"name",
+				"assignmentType",
+				"password",
+				"passwordMessage",
+				"visibleToStudents"
+								],
+				"additionalProperties": "false",
+				"properties": {
+								"courseID": {
+												"$ref": "#/definitions/courseID"
+								},
+								"submissionQuestion": {
+												"$ref": "#/definitions/submissionQuestion"
+								},
+								"submissionStartDate": {
+												"$ref": "#/definitions/submissionStartDate"
+								},
+								"submissionStopDate": {
+												"$ref": "#/definitions/submissionStopDate"
+								},
+								"reviewStartDate": {
+												"$ref": "#/definitions/reviewStartDate"
+								},
+								"reviewStopDate": {
+												"$ref": "#/definitions/reviewStopDate"
+								},
+								"markPostDate": {
+												"$ref": "#/definitions/markPostDate"
+								},
+								"appealStopDate": {
+												"$ref": "#/definitions/appealStopDate"
+								},
+								"showMarksForReviewsReceived": {
+												"$ref": "#/definitions/showMarksForReviewsReceived"
+								},
+								"showOtherReviewsByStudents": {
+												"$ref": "#/definitions/showOtherReviewsByStudents"
+								},
+								"showOtherReviewsByInstructors": {
+												"$ref": "#/definitions/showOtherReviewsByInstructors"
+								},
+								"showMarksForOtherReviews": {
+												"$ref": "#/definitions/showMarksForOtherReviews"
+								},
+								"showMarksForReviewedSubmissions": {
+												"$ref": "#/definitions/showMarksForReviewedSubmissions"
+								},
+								"showPoolStatus": {
+												"$ref": "#/definitions/showPoolStatus"
+								},
+								"maxSubmissionScore": {
+												"$ref": "#/definitions/maxSubmissionScore"
+								},
+								"maxReviewScore": {
+												"$ref": "#/definitions/maxReviewScore"
+								},
+								"defaultNumberOfReviews": {
+												"$ref": "#/definitions/defaultNumberOfReviews"
+								},
+								"allowRequestOfReviews": {
+												"$ref": "#/definitions/allowRequestOfReviews"
+								},
+								"calibrationMinCount": {
+												"$ref": "#/definitions/calibrationMinCount"
+								},
+								"calibrationMaxScore": {
+												"$ref": "#/definitions/calibrationMaxScore"
+								},
+								"calibrationThresholdMSE": {
+												"$ref": "#/definitions/calibrationThresholdMSE"
+								},
+								"calibrationThresholdScore": {
+												"$ref": "#/definitions/calibrationThresholdScore"
+								},
+								"submissionType": {
+												"$ref": "#/definitions/submissionType"
+								},
+								"submissionSettings": {
+												"$ref": "#/definitions/submissionSettings"
+								},
+								"calibrationPoolAssignmentIds": {
+												"$ref": "#/definitions/calibrationPoolAssignmentIds"
+								},
+								"extraCalibrations": {
+												"$ref": "#/definitions/extraCalibrations"
+								},
+								"calibrationStartDate": {
+												"$ref": "#/definitions/calibrationStartDate"
+								},
+								"calibrationStopDate": {
+												"$ref": "#/definitions/calibrationStopDate"
+								},
+								"dateFormat": {
+												"$ref": "#/definitions/dateFormat"
+								},
+								"assignmentID": {
+												"$ref": "#/definitions/assignmentID"
+								},
+								"name": {
+												"$ref": "#/definitions/name"
+								},
+								"assignmentType": {
+												"$ref": "#/definitions/assignmentType"
+								},
+								"password": {
+												"$ref": "#/definitions/password"
+								},
+								"passwordMessage": {
+												"$ref": "#/definitions/passwordMessage"
+								},
+								"visibleToStudents": {
+												"$ref": "#/definitions/visibleToStudents"
+								}
+				}
+			},
+			"targetSchema": {
+				"type": "object",
+				"properties" : {
+					"errors": {
+						"$ref" : "#/definitions/errors"	
+					}
+				}
+			
+			}
+
+		},
+	{
+		"description" : "create an assignment",
+		"href" : "/assignment/create",
+		"method": "POST",
+		"title": "create",
+		"rel" : "create",
+		"schema": {
+				"type" : "object", 
+				"required": [
+								"courseID",
+				"submissionQuestion",
+				"submissionStartDate",
+				"submissionStopDate",
+				"reviewStartDate",
+				"reviewStopDate",
+				"markPostDate",
+				"appealStopDate",
+				"showMarksForReviewsReceived",
+				"showOtherReviewsByStudents",
+				"showOtherReviewsByInstructors",
+				"showMarksForOtherReviews",
+				"showMarksForReviewedSubmissions",
+				"showPoolStatus",
+				"maxSubmissionScore",
+				"maxReviewScore",
+				"defaultNumberOfReviews",
+				"allowRequestOfReviews",
+				"calibrationMinCount",
+				"calibrationMaxScore",
+				"calibrationThresholdMSE",
+				"calibrationThresholdScore",
+				"submissionType",
+				"submissionSettings",
+				"calibrationPoolAssignmentIds",
+				"extraCalibrations",
+				"calibrationStartDate",
+				"calibrationStopDate",
+				"dateFormat",
+				"name",
+				"assignmentType",
+				"password",
+				"passwordMessage",
+				"visibleToStudents"
+								],
+				"additionalProperties": "false",
+				"properties": {
+								"courseID": {
+												"$ref": "#/definitions/courseID"
+								},
+								"submissionQuestion": {
+												"$ref": "#/definitions/submissionQuestion"
+								},
+								"submissionStartDate": {
+												"$ref": "#/definitions/submissionStartDate"
+								},
+								"submissionStopDate": {
+												"$ref": "#/definitions/submissionStopDate"
+								},
+								"reviewStartDate": {
+												"$ref": "#/definitions/reviewStartDate"
+								},
+								"reviewStopDate": {
+												"$ref": "#/definitions/reviewStopDate"
+								},
+								"markPostDate": {
+												"$ref": "#/definitions/markPostDate"
+								},
+								"appealStopDate": {
+												"$ref": "#/definitions/appealStopDate"
+								},
+								"showMarksForReviewsReceived": {
+												"$ref": "#/definitions/showMarksForReviewsReceived"
+								},
+								"showOtherReviewsByStudents": {
+												"$ref": "#/definitions/showOtherReviewsByStudents"
+								},
+								"showOtherReviewsByInstructors": {
+												"$ref": "#/definitions/showOtherReviewsByInstructors"
+								},
+								"showMarksForOtherReviews": {
+												"$ref": "#/definitions/showMarksForOtherReviews"
+								},
+								"showMarksForReviewedSubmissions": {
+												"$ref": "#/definitions/showMarksForReviewedSubmissions"
+								},
+								"showPoolStatus": {
+												"$ref": "#/definitions/showPoolStatus"
+								},
+								"maxSubmissionScore": {
+												"$ref": "#/definitions/maxSubmissionScore"
+								},
+								"maxReviewScore": {
+												"$ref": "#/definitions/maxReviewScore"
+								},
+								"defaultNumberOfReviews": {
+												"$ref": "#/definitions/defaultNumberOfReviews"
+								},
+								"allowRequestOfReviews": {
+												"$ref": "#/definitions/allowRequestOfReviews"
+								},
+								"calibrationMinCount": {
+												"$ref": "#/definitions/calibrationMinCount"
+								},
+								"calibrationMaxScore": {
+												"$ref": "#/definitions/calibrationMaxScore"
+								},
+								"calibrationThresholdMSE": {
+												"$ref": "#/definitions/calibrationThresholdMSE"
+								},
+								"calibrationThresholdScore": {
+												"$ref": "#/definitions/calibrationThresholdScore"
+								},
+								"submissionType": {
+												"$ref": "#/definitions/submissionType"
+								},
+								"submissionSettings": {
+												"$ref": "#/definitions/submissionSettings"
+								},
+								"calibrationPoolAssignmentIds": {
+												"$ref": "#/definitions/calibrationPoolAssignmentIds"
+								},
+								"extraCalibrations": {
+												"$ref": "#/definitions/extraCalibrations"
+								},
+								"calibrationStartDate": {
+												"$ref": "#/definitions/calibrationStartDate"
+								},
+								"calibrationStopDate": {
+												"$ref": "#/definitions/calibrationStopDate"
+								},
+								"dateFormat": {
+												"$ref": "#/definitions/dateFormat"
+								},
+								"name": {
+												"$ref": "#/definitions/name"
+								},
+								"assignmentType": {
+												"$ref": "#/definitions/assignmentType"
+								},
+								"password": {
+												"$ref": "#/definitions/password"
+								},
+								"passwordMessage": {
+												"$ref": "#/definitions/passwordMessage"
+								},
+								"visibleToStudents": {
+												"$ref": "#/definitions/visibleToStudents"
+								}
+				}
+			},
+			"targetSchema": {
+				"type": "object",
+				"properties" : {
+					"errors": {
+						"$ref" : "#/definitions/errors"	
+					}
+				}
+			
+			}
+	} ,
+ 	{
+		"description" : "delete an assignment",
+		"href" : "/assignment/delete",
+		"method" : "POST",
+		"title" : "delete",
+		"rel" : "destroy",
+		"schema" : {
+			"type": "object",
+			"required": ["assignmentID"],
+			"properties" : {
+				"$ref" : "#/definitions/assignmentID"
+			}
+		},
+		"targetSchema" : {
+			"type": "object",
+			"properties" : {
+				"$ref" : "#/definitions/errors"
+			}
+		}
+	}
+	]
+}

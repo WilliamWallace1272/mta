@@ -1,0 +1,146 @@
+{
+  "id": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "FIXME - Peermatch",
+  "description": "FIXME",
+  "stability": "prototype",
+  "strictProperties": true,
+  "type": [
+    "object"
+  ],
+  "definitions": {
+    "assignmentID": {
+      "description": "unique assignment ID used in MTA",
+      "type": "integer"
+    },
+    "userID": {
+      "type": "integer",
+      "description": "userID from keyed from users table, can be student/TA/instructor"
+    },
+    "errors": {
+      "description": "error output from api call",
+      "type": "string"
+    },
+    "peerMatches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "studentID",
+          "matchList"
+        ],
+        "additionalProperties": "false",
+        "properties": {
+          "studentID": {
+            "$ref": "#/definitions/userID"
+          },
+          "matchList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/userID"
+            }
+          }
+        }
+      }
+    }
+  },
+  "links": [
+    {
+      "description": "list all peermatches for an assignment",
+      "href": "/peermatch/get",
+      "method": "POST",
+      "rel": "list",
+      "schema": {
+        "type": "object",
+        "required": [
+          "assignmentID"
+        ],
+        "additionalProperties": "false",
+        "properties": {
+          "assignmentID": {
+            "$ref": "#/definitions/assignmentID"
+          }
+        }
+      },
+      "targetSchema": {
+        "type": "object",
+        "required": [
+          "assignmentID"
+        ],
+        "additionalProperties": "false",
+        "properties": {
+          "assignmentID": {
+            "$ref": "#/definitions/assignmentID"
+          },
+          "peerMatches": {
+            "$ref": "#/definitions/peerMatches"
+          },
+          "errors": {
+            "$ref": "#/definitions/errors"
+          }
+        }
+      }
+    },
+    {
+      "description": "Create a new peermatch,[fill in details] ",
+      "href": "/peermatch",
+      "method": "POST",
+      "rel": "create",
+      "schema": {
+        "required": [
+          "assignmentID",
+          "peerMatches"
+        ],
+        "additionalProperties": "false",
+        "properties": {
+          "assignmentID": {
+            "$ref": "#/definitions/assignmentID"
+          },
+          "peerMatches": {
+            "$ref": "#/definitions/peerMatches"
+          }
+        },
+        "type": [
+          "object"
+        ]
+      },
+      "targetSchema": {
+        "type": [
+          "object"
+        ],
+        "properties": {
+          "$ref": "#/definitions/errors"
+        }
+      },
+      "title": "create"
+    },
+    {
+      "description": "Delete all peermatch data for a given assignmentID",
+      "href": "/peermatch/{(%2Fschemata%2Fpeermatch%23%2Fdefinitions%2Fidentity)}",
+      "method": "DELETE",
+      "rel": "destroy",
+      "title": "Delete",
+      "schema": {
+        "type": "object",
+        "required": [
+          "assignmentID"
+        ],
+        "additionalProperties": "false",
+        "properties": {
+          "assignmentID": {
+            "$ref": "#/definitions/assignmentID"
+          }
+        }
+      },
+      "targetSchema" : {
+	"type": "object",
+	"properties" : {
+	  "errors": {
+	     "$ref": "#/definitions/errors"
+	  }
+	}
+      }
+    }
+  ],
+  "id": "schemata/peermatch"
+}

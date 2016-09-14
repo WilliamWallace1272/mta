@@ -3,5 +3,7 @@
         "slim/slim": "^3.0",
 		"justinrainbow/json-schema": "~2.0",
 		"league/json-guard": "^0.3.3"
+        "codeception/codeception": "^2.2",
+        "tuupola/slim-basic-auth": "^2.1"
     }
 }
